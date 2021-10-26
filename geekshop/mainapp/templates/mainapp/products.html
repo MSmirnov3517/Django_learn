@@ -5,12 +5,9 @@
 
 <div class="hero-white">
     <div class="header clearfix">
-        <a href="index.html" class="logo"></a>
+        <a href="{% url 'index' %}" class="logo"></a>
         <ul class="menu">
-            <li><a href="/">домой</a></li>
-            <li><a href="/products/" class="active">продукты</a></li>
-            <li><a href="/contact/">контакты</a></li>
-
+            {% include 'mainapp/includes/inc_main_menu.html' %}
         </ul>
         <a href="#" class="search"></a>
         <a href="#" class="basket"></a>
@@ -23,11 +20,11 @@
 <div class="details">
     <div class="links clearfix">
         <ul class="links-menu">
-            <li><a href="#" class="active">все</a></li>
-            <li><a href="#">дом</a></li>
-            <li><a href="#">офис</a></li>
-            <li><a href="#">модерн</a></li>
-            <li><a href="#">классика</a></li>
+            {% for link_item in links_menu %}
+                <li><a href="{% url link_item.url %}"
+                {% if request.resolver_match.url_name == link_item.url %}class='active'{% endif %}
+                >{{ link_item.title }}</a></li>
+            {% endfor %}
         </ul>
     </div>
 
