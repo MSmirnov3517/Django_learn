@@ -3,12 +3,19 @@ import random
 from django.shortcuts import render
 from mainapp.models import Product, ProductCategory
 from django.shortcuts import get_object_or_404
+from basketapp.models import Basket
 
 # Create your views here.
+def get_basket(user):
+    if user.is_authenticated:
+        return Basket.objects.filter(user=user)
+    return []
+
 def index(request):
     context = {
         'title': 'Главная',
-        'products': Product.objects.all()[:3]
+        'products': Product.objects.all()[:3],
+        'basket': get_basket(request.user)
     }
     return render(request, 'mainapp/index.html', context)
 
@@ -21,6 +28,7 @@ def contact(request):
 
 
 def products(request, pk=None):
+
     links_menu = ProductCategory.objects.all()
     if pk is not None:
         if pk == 0:
@@ -36,7 +44,9 @@ def products(request, pk=None):
             'links_menu': links_menu,
             'title': 'Продукты',
             'category': category_item,
-            'products': products_list
+            'products': products_list,
+            'basket': get_basket(request.user)
+
         }
         return render(request, 'mainapp/products_list.html', context=context)
 
@@ -46,6 +56,7 @@ def products(request, pk=None):
         'links_menu': links_menu,
         'title': 'Продукты',
         'hot_product': hot_product,
-        'same_products': same_products
+        'same_products': same_products,
+        'basket': get_basket(request.user)
     }
     return render(request, 'mainapp/products.html', context=context)

@@ -316,6 +316,7 @@ html, body {
     width: 175px;
 }
 
+
 .user_record .user_name a {
     color: #555;
 }
@@ -704,6 +705,10 @@ html, body {
 	left: 1185px;
     text-decoration: none;
     color: #555;
+    padding-left: 27px;
+    background-repeat: no-repeat;
+    color: #f99;
+    font-weight: bold;
 }
 
 .basket span {
