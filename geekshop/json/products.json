@@ -1,0 +1,27 @@
+[
+  {
+    "category": "офис",
+    "name": "офис 1",
+    "image": "products/product-1.jpg",
+    "price": "100",
+    "quantity":"1"
+  },  {
+    "category": "дом",
+    "name": "дом 2",
+    "image": "products/product-2.jpg",
+    "price": "200",
+    "quantity": "5"
+  },  {
+    "category": "модерн",
+    "name": "модерн 1",
+    "image": "products/product-3.jpg",
+    "price": "300",
+    "quantity": "1"
+  },  {
+    "category": "модерн",
+    "name": "модерн 2",
+    "image": "products/product-4.jpg",
+    "price": "200",
+    "quantity": "2"
+  }
+]
